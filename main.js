@@ -7,8 +7,8 @@ var divMenuMain = document.getElementById('divMenuMain');
 var divMenuSettings = document.getElementById('divMenuSettings');
 var divMenuAccount = document.getElementById('divMenuAccount');
 var c = canvas.getContext("2d");
-var canvasMargin = 50;
-let openMenu = 1;
+var canvasMargin = 30;
+let openMenu = 0;
 
 function updateSize(){
     const bodyHeight = document.body.clientHeight;
