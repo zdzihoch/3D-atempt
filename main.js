@@ -7,17 +7,24 @@ var divMenuMain = document.getElementById('divMenuMain');
 var divMenuSettings = document.getElementById('divMenuSettings');
 var divMenuAccount = document.getElementById('divMenuAccount');
 var c = canvas.getContext("2d");
-var canvasMargin = 20;
+var canvasMargin = 50;
 let openMenu = 1;
 
 function updateSize(){
-    if(document.body.clientHeight < document.body.clientWidth){
-        canvas.height = document.body.clientHeight - canvasMargin;
-        canvas.width = ((canvas.height / 9)*16 )- canvasMargin;
-    }else{
-    canvas.width = document.body.clientWidth - canvasMargin;
-        canvas.height = ((canvas.width /16)*9 )- canvasMargin;
+    const bodyHeight = document.body.clientHeight;
+    const bodyWidth = document.body.clientWidth;
+    const aspectRatio = 16 / 9;
+
+    let newWidth = bodyWidth - canvasMargin;
+    let newHeight = (newWidth / aspectRatio);
+
+    if (newHeight > bodyHeight - canvasMargin) {
+        newHeight = bodyHeight - canvasMargin;
+        newWidth = newHeight * aspectRatio;
     }
+
+    canvas.width = newWidth;
+    canvas.height = newHeight;
 };
 function checkMousePos(){
     if(event.clientX > document.body.clientWidth - 10 && openMenu == 0){
